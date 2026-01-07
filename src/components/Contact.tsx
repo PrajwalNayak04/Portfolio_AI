@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Phone, Linkedin, Github } from "lucide-react";
 
 export const Contact = () => {
   const ref = useRef(null);
@@ -28,22 +28,52 @@ export const Contact = () => {
             I'll do my best to get back to you!
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-            <div className="flex items-center gap-3 text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
+            <a
+              href="mailto:prajwalnayak2309@gmail.com"
+              className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+            >
               <Mail className="text-primary" size={20} />
-              <span>hello@prajwal.dev</span>
-            </div>
+              <span className="text-sm sm:text-base">prajwalnayak2309@gmail.com</span>
+            </a>
+            <a
+              href="tel:+918879635057"
+              className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Phone className="text-primary" size={20} />
+              <span>+91 8879635057</span>
+            </a>
             <div className="flex items-center gap-3 text-muted-foreground">
               <MapPin className="text-primary" size={20} />
-              <span>India</span>
+              <span>Mumbai, India</span>
             </div>
           </div>
 
+          {/* Social Links */}
+          <div className="flex items-center justify-center gap-6 mb-12">
+            <a
+              href="https://github.com/PrajwalNayak04"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-lg glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
+            >
+              <Github size={24} />
+            </a>
+            <a
+              href="https://linkedin.com/in/prajwal-nayak"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-lg glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
+            >
+              <Linkedin size={24} />
+            </a>
+          </div>
+
           <motion.a
-            href="mailto:hello@prajwal.dev"
+            href="mailto:prajwalnayak2309@gmail.com"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:glow transition-all duration-300"
+            className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 rounded-xl bg-primary text-primary-foreground font-semibold text-base sm:text-lg hover:glow transition-all duration-300"
           >
             <Send size={22} />
             Say Hello

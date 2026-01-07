@@ -5,52 +5,24 @@ import { ExternalLink, Github, Folder } from "lucide-react";
 
 const featuredProjects = [
   {
-    title: "E-Commerce Platform",
+    title: "Online Food Delivery Website",
     description:
-      "A full-stack e-commerce solution with real-time inventory management, secure payment processing, and an intuitive admin dashboard. Built with performance and scalability in mind.",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    github: "#",
+      "Developed a final-year college project inspired by Swiggy and Zomato platforms. Implemented restaurant listings, menu display, and order workflow. Used PHP for backend processing and dynamic content handling.",
+    tech: ["HTML", "CSS", "JavaScript", "PHP"],
+    github: "https://github.com/PrajwalNayak04",
     external: "#",
-  },
-  {
-    title: "Task Management App",
-    description:
-      "A collaborative project management tool featuring real-time updates, drag-and-drop functionality, and team collaboration features. Designed for maximum productivity.",
-    tech: ["TypeScript", "React", "Socket.io", "MongoDB"],
-    github: "#",
-    external: "#",
-  },
-  {
-    title: "AI Content Generator",
-    description:
-      "An intelligent content creation platform that leverages AI to help users generate high-quality articles, social media posts, and marketing copy.",
-    tech: ["Python", "OpenAI", "FastAPI", "React"],
-    github: "#",
-    external: "#",
+    year: "2025",
   },
 ];
 
 const otherProjects = [
   {
-    title: "Weather Dashboard",
-    description: "A beautiful weather application with location-based forecasts and interactive maps.",
-    tech: ["React", "OpenWeather API", "Chart.js"],
-    github: "#",
+    title: "Basic Banking System",
+    description: "Developed during internship at The Sparks Foundation. Implemented money transfer functionality and transaction history tracking with clean UI design and form validation.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/PrajwalNayak04",
     external: "#",
-  },
-  {
-    title: "Portfolio Template",
-    description: "A customizable portfolio template for developers with dark mode and animations.",
-    tech: ["Next.js", "Tailwind", "Framer Motion"],
-    github: "#",
-    external: "#",
-  },
-  {
-    title: "Budget Tracker",
-    description: "Personal finance management app with expense categorization and visual analytics.",
-    tech: ["React", "Firebase", "Recharts"],
-    github: "#",
-    external: "#",
+    year: "2024",
   },
 ];
 
@@ -81,45 +53,42 @@ export const Projects = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 * index, duration: 0.5 }}
-                className={`relative grid md:grid-cols-12 gap-4 items-center ${
-                  index % 2 === 1 ? "md:text-right" : ""
-                }`}
+                className="relative"
               >
-                <div
-                  className={`md:col-span-7 ${
-                    index % 2 === 1 ? "md:col-start-6" : ""
-                  }`}
-                >
-                  <div className="glass rounded-xl p-8 glow-sm hover:glow transition-all duration-500">
-                    <p className="text-primary text-sm mb-2 font-medium">Featured Project</p>
-                    <h3 className="text-2xl font-heading font-bold mb-4">{project.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      {project.description}
-                    </p>
-                    <ul className={`flex flex-wrap gap-3 mb-6 ${index % 2 === 1 ? "md:justify-end" : ""}`}>
-                      {project.tech.map((tech) => (
-                        <li
-                          key={tech}
-                          className="text-sm text-primary bg-primary/10 px-3 py-1 rounded-full"
-                        >
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className={`flex gap-4 ${index % 2 === 1 ? "md:justify-end" : ""}`}>
-                      <a
-                        href={project.github}
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                <div className="glass rounded-xl p-8 glow-sm hover:glow transition-all duration-500">
+                  <div className="flex flex-wrap items-center gap-4 mb-2">
+                    <p className="text-primary text-sm font-medium">Featured Project</p>
+                    <span className="text-muted-foreground text-sm">({project.year})</span>
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold mb-4">{project.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+                  <ul className="flex flex-wrap gap-3 mb-6">
+                    {project.tech.map((tech) => (
+                      <li
+                        key={tech}
+                        className="text-sm text-primary bg-primary/10 px-3 py-1 rounded-full"
                       >
-                        <Github size={22} />
-                      </a>
-                      <a
-                        href={project.external}
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <ExternalLink size={22} />
-                      </a>
-                    </div>
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex gap-4">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Github size={22} />
+                    </a>
+                    <a
+                      href={project.external}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <ExternalLink size={22} />
+                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -127,7 +96,7 @@ export const Projects = () => {
           </div>
 
           {/* Other Projects */}
-          <div className="mt-32">
+          <div className="mt-24">
             <h3 className="text-2xl font-heading font-bold text-center mb-12">
               Other Noteworthy Projects
             </h3>
@@ -141,10 +110,15 @@ export const Projects = () => {
                   className="glass rounded-xl p-6 hover:-translate-y-2 hover:glow-sm transition-all duration-300 group"
                 >
                   <div className="flex justify-between items-start mb-6">
-                    <Folder className="text-primary" size={40} />
+                    <div className="flex items-center gap-3">
+                      <Folder className="text-primary" size={40} />
+                      <span className="text-muted-foreground text-sm">({project.year})</span>
+                    </div>
                     <div className="flex gap-3">
                       <a
                         href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
                         <Github size={20} />
