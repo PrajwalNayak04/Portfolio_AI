@@ -1,16 +1,44 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const skills = [
-  "JavaScript (ES6+)",
-  "TypeScript",
-  "React",
-  "Node.js",
-  "Tailwind CSS",
-  "Python",
-  "PostgreSQL",
-  "Git",
+  "Core Java",
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "SQL",
+  "PHP",
+];
+
+const softSkills = [
+  "Problem-Solving",
+  "Adaptability",
+  "Communication",
+  "Team Collaboration",
+];
+
+const education = [
+  {
+    institution: "University of Mumbai",
+    degree: "B.Sc. in Information Technology",
+    period: "2022 – 2025",
+    location: "Mumbai, India",
+    details: "Overall Percentage: 71.50%",
+  },
+  {
+    institution: "MVM Junior College of Commerce",
+    degree: "Higher Secondary Education",
+    period: "2022",
+    details: "Percentage: 80.83%",
+  },
+  {
+    institution: "St. Anthony's High School",
+    degree: "Secondary School Education",
+    period: "2020",
+    details: "Percentage: 73.60%",
+  },
 ];
 
 export const About = () => {
@@ -35,29 +63,27 @@ export const About = () => {
           <div className="grid md:grid-cols-2 gap-12 mt-12">
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                Hello! I'm Prajwal, a passionate developer who loves creating 
-                things that live on the internet. My interest in web development 
-                started back when I first discovered how websites work, and I've 
-                been hooked ever since.
+                Hello! I'm Prajwal, a B.Sc. IT graduate from the University of Mumbai 
+                with a passion for web development. My journey in tech started with 
+                exploring how websites work, and I've been building digital experiences ever since.
               </p>
               <p>
-                Fast-forward to today, I've had the privilege of working on 
-                various projects ranging from small business websites to complex 
-                web applications. My main focus these days is building accessible, 
-                inclusive products and digital experiences.
+                I've worked on various projects including a banking system during my 
+                internship at The Sparks Foundation and a food delivery platform as 
+                my final year project. I'm always eager to learn new technologies 
+                and improve my skills.
               </p>
               <p>
-                When I'm not coding, you can find me exploring new technologies, 
-                contributing to open-source projects, or expanding my knowledge 
-                through online courses and tech communities.
+                <strong className="text-foreground">Achievement:</strong> Maintained consistent 
+                academic performance with strong semester-wise CGPA throughout my course.
               </p>
             </div>
 
             <div>
               <h3 className="text-lg font-semibold mb-6">
-                Technologies I've been working with:
+                Technical Skills:
               </h3>
-              <ul className="grid grid-cols-2 gap-3">
+              <ul className="grid grid-cols-2 gap-3 mb-8">
                 {skills.map((skill, index) => (
                   <motion.li
                     key={skill}
@@ -72,17 +98,51 @@ export const About = () => {
                 ))}
               </ul>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="mt-10 relative w-64 h-64 mx-auto md:mx-0"
-              >
-                <div className="absolute inset-0 rounded-xl bg-primary/20 translate-x-4 translate-y-4" />
-                <div className="relative w-full h-full rounded-xl glass overflow-hidden border-2 border-primary/30 flex items-center justify-center">
-                  <span className="text-6xl font-heading font-bold text-gradient">PN</span>
-                </div>
-              </motion.div>
+              <h3 className="text-lg font-semibold mb-6">
+                Professional Skills:
+              </h3>
+              <ul className="grid grid-cols-2 gap-3">
+                {softSkills.map((skill, index) => (
+                  <motion.li
+                    key={skill}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.1 * index + 0.4, duration: 0.4 }}
+                    className="flex items-center gap-3 text-muted-foreground"
+                  >
+                    <span className="text-primary text-sm">▹</span>
+                    {skill}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Education Section */}
+          <div className="mt-16">
+            <h3 className="text-2xl font-heading font-bold mb-8 flex items-center gap-4">
+              <span className="text-primary">Education</span>
+            </h3>
+            <div className="space-y-6">
+              {education.map((edu, index) => (
+                <motion.div
+                  key={edu.institution}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 * index + 0.6, duration: 0.4 }}
+                  className="glass rounded-xl p-6"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                    <h4 className="text-lg font-semibold">{edu.institution}</h4>
+                    <span className="text-primary text-sm">{edu.period}</span>
+                  </div>
+                  <p className="text-muted-foreground">{edu.degree}</p>
+                  {edu.location && (
+                    <p className="text-muted-foreground text-sm">{edu.location}</p>
+                  )}
+                  <p className="text-primary text-sm mt-2">{edu.details}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.div>
